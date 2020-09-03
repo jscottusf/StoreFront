@@ -7,6 +7,7 @@ export const environment = {
     projectId: "storefrontjs",
     storageBucket: "storefrontjs.appspot.com",
     messagingSenderId: "739392150345",
-    appId: "1:739392150345:web:ebacf90f097f75377f1898"
+    appId: "1:739392150345:web:f14d79e8c503598d7f1898",
+    measurementId: "G-352L2NVBDJ"
   }
 };

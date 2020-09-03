@@ -8,22 +8,26 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
 import { LoginComponent } from './login/login.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { AuthGuard } from './auth-guard.service';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
+  {path: 'login', component: LoginComponent },
   {path: 'products', component: ProductsComponent },
   {path: 'shopping-cart', component: ShoppingCartComponent },
-  {path: 'check-out', component: CheckOutComponent },
-  {path: 'order-success', component: OrderSuccessComponent },
-  {path: 'login', component: LoginComponent },
-  {path: 'admin/products', component: AdminProductsComponent },
-  {path: 'admin/orders', component: AdminOrdersComponent },
+
+  {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
+  {path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
+  {path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
+  
+  {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard] },
+  {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
-  imports: [NgbModule, RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
